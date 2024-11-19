@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class enemy : MonoBehaviour
+public class enemy : MonoBehaviour, IDamageable
 {
     public float speed = 3f;          // Speed of the enemy
     public float health = 50f;        // Health of the enemy
@@ -57,19 +57,20 @@ public class enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // **Method to take damage**
+    // Implement the TakeDamage method from the IDamageable interface
     public void TakeDamage(float damage)
     {
         health -= damage;
+        Debug.Log($"Enemy took {damage} damage. Remaining health: {health}");
         if (health <= 0)
         {
             Die();
         }
     }
 
-    // **Destroy the enemy when health reaches 0**
-    void Die()
+    private void Die()
     {
+        Debug.Log("Enemy has died.");
         Destroy(gameObject);
     }
 }
