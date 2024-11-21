@@ -8,6 +8,9 @@ public class SOMI_enemy : MonoBehaviour, IDamageable
     public float healthMultiplier = 1f; // Multiplier to scale health (e.g., set to 2x for a Big Enemy)
     private float health;             // Current health of the enemy
     private Transform[] waypoints;    // Array of waypoints the enemy will follow
+    public int howmanyenemyspawn = 3;
+    public GameObject enemiestospawn;
+    public float spawnradius = 0.1f;
     private int currentWaypointIndex = 0;
 
     void Start()
@@ -63,6 +66,7 @@ public class SOMI_enemy : MonoBehaviour, IDamageable
         if (health <= 0)
         {
             Die();
+            skibidi();
         }
     }
 
@@ -70,5 +74,16 @@ public class SOMI_enemy : MonoBehaviour, IDamageable
     void Die()
     {
         Destroy(gameObject);
+    }
+
+    private void skibidi()
+    {
+        Debug.Log($"enemies are beign called rn, if this doesn't show, it isn't working you retard monkey");
+        for (int i = 0; i < howmanyenemyspawn; i++)
+        {
+            // Randomize spawn position around the Big Enemy
+            Vector2 spawnPosition = (Vector2)transform.position + Random.insideUnitCircle * spawnradius;
+            Instantiate(enemiestospawn, spawnPosition, Quaternion.identity);
+        }
     }
 }

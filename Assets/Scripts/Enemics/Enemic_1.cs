@@ -21,6 +21,9 @@ public class enemy : MonoBehaviour, IDamageable
     }
 
     void Update()
+
+
+    
     {
         // Call the method to move along the path
         MoveAlongPath();
@@ -57,20 +60,24 @@ public class enemy : MonoBehaviour, IDamageable
         Destroy(gameObject);
     }
 
-    // Implement the TakeDamage method from the IDamageable interface
+    // Method to set the current waypoint index
+    public void SetCurrentWaypointIndex(int index)
+    {
+        currentWaypointIndex = index;
+    }
+
+    // Method to take damage
     public void TakeDamage(float damage)
     {
         health -= damage;
-        Debug.Log($"Enemy took {damage} damage. Remaining health: {health}");
         if (health <= 0)
         {
             Die();
         }
     }
 
-    private void Die()
+    void Die()
     {
-        Debug.Log("Enemy has died.");
         Destroy(gameObject);
     }
 }

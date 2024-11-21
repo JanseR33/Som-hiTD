@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
     {
         if (target != null && Vector2.Distance(transform.position, target.position) <= proximityThreshold)
         {
-            // Check if the target implements IDamageable
+            // damage the enemy if it has the IDamageable Interface
             IDamageable damageable = target.GetComponent<IDamageable>();
             if (damageable != null)
             {
@@ -40,6 +40,7 @@ public class Projectile : MonoBehaviour
             }
             else
             {
+                // At first it was giving me some trouble to determine the impact, so I wrote this LogWarning.
                 Debug.LogWarning($"Target {target.name} does not implement IDamageable.");
             }
         }
