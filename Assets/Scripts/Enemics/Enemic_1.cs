@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class enemy : MonoBehaviour, IDamageable
+public class enemy : MonoBehaviour, IDamageable, IWaypointFollower
 {
     public float speed = 3f;          // Speed of the enemy
     public float health = 50f;        // Health of the enemy
@@ -61,9 +61,9 @@ public class enemy : MonoBehaviour, IDamageable
     }
 
     // Method to set the current waypoint index
-    public void SetCurrentWaypointIndex(int index)
+    public void SetCurrentWaypointIndex(int gyatt)
     {
-        currentWaypointIndex = index;
+        currentWaypointIndex = gyatt;
     }
 
     // Method to take damage

@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  health: 50
+  baseHealth: 50
+  healthMultiplier: 1
 --- !u!212 &-245722355054841038
 SpriteRenderer:
   m_ObjectHideFlags: 0
