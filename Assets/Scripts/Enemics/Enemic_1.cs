@@ -21,9 +21,6 @@ public class enemy : MonoBehaviour, IDamageable, IWaypointFollower
     }
 
     void Update()
-
-
-    
     {
         // Call the method to move along the path
         MoveAlongPath();
@@ -57,6 +54,7 @@ public class enemy : MonoBehaviour, IDamageable, IWaypointFollower
     void ReachEnd()
     {
         // Behavior when reaching the end of the path (in development)
+        
         Destroy(gameObject);
     }
 
@@ -75,7 +73,6 @@ public class enemy : MonoBehaviour, IDamageable, IWaypointFollower
             Die();
         }
     }
-
     void Die()
     {
         Destroy(gameObject);
