@@ -1,12 +1,15 @@
 using System.Collections;
 using UnityEngine;
+
 public class Spawnpoint : MonoBehaviour
 {
-    [SerializeField] private GameObject defaultEnemyPrefab; // Default enemy to spawn
-    private float defaultSpawnInterval; // Default time between spawns
-    private int defaultQuantity; // Default number of enemies to spawn
+    [SerializeField] private string spawnpointID;
+    [SerializeField] private GameObject defaultEnemyPrefab;
+    private float defaultSpawnInterval; 
+    private int defaultQuantity; 
 
     private bool isSpawning = false;
+    public string SpawnpointID => spawnpointID; // Public accessor
 
     public IEnumerator SpawnEnemies(GameObject enemyPrefab, int quantity, float spawnInterval)
     {
@@ -19,18 +22,11 @@ public class Spawnpoint : MonoBehaviour
         }
 
         isSpawning = false;
-        {
-            yield return null;
-            Debug.Log($"Spawn of {gameObject.name} finished");
-        }; // Mark spawning as finished
+        Debug.Log($"Spawn of {gameObject.name} finished");
     }
 
     public bool IsSpawning()
     {
         return isSpawning;
     }
-
-    // Public read-only properties
-    public int DefaultQuantity => defaultQuantity;
-    public float DefaultSpawnInterval => defaultSpawnInterval;
 }
