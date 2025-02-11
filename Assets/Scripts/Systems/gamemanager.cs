@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<WaveConfiguration> waveConfigurations = new List<WaveConfiguration>();
     [SerializeField] private Button startWaveButton; // The button that starts the wave (hopefully)
     private List<Spawnpoint> allSpawnpoints = new List<Spawnpoint>();
+    public enemy enemy; // I think, with this i'll be able to call the ReachEnd void.
     private bool isWaveActive = false;
     
     private void Start()
@@ -45,7 +46,13 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(HandleWave());
     }
+    public void stopWave()
+    {
+        // this will stop the wave
+        StopCoroutine(HandleWave());
+        enemy.Die();
 
+    }
     private IEnumerator HandleWave()
     {
         isWaveActive = true;
