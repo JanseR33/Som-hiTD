@@ -12,6 +12,8 @@ public class SOMI_enemy : MonoBehaviour, IDamageable
     public GameObject enemiestospawn;
     public float spawnradius = 0f;
     private int currentWaypointIndex = 0;
+    public int DamagePlayer = 20;
+    public PlayerStats PlayerStats;
 
     void Start()
     {
@@ -44,13 +46,14 @@ public class SOMI_enemy : MonoBehaviour, IDamageable
         }
         else
         {
-            ReachEnd();
+            BetaCuck();
         }
     }
 
-    void ReachEnd()
+    void BetaCuck()
     {
         Destroy(gameObject);
+        PlayerStats.playerhit(DamagePlayer);
     }
 
     public void TakeDamage(float damage)
